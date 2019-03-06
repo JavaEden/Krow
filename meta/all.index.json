@@ -1,0 +1,115 @@
+{
+  "ownKey": "internal",
+  "childrenPages": {
+    "wiki": {
+      "ownKey": "wiki",
+      "childrenPages": {
+        "formatters": {
+          "ownKey": "formatters",
+          "ownPages": [{
+            "reference": {
+              "path": "wiki",
+              "baseUrl": "https://copper-leaf.github.io/krow",
+              "fileName": "formatters",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://copper-leaf.github.io/krow/wiki/formatters"
+            },
+            "previous": {
+              "path": "wiki",
+              "baseUrl": "https://copper-leaf.github.io/krow",
+              "fileName": "creating-tables",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://copper-leaf.github.io/krow/wiki/creating-tables"
+            },
+            "description": "",
+            "title": "Table Formatters",
+            "content": "<h1 id=\"formatting-tables\">Formatting Tables<\/h1>\n<p>Once a Table has been created like so:<\/p>\n<pre><code class=\"language-kotlin\">val table = krow {\n    ...\n}\n<\/code><\/pre>\n<p>You can then print the Table in any format you wish. Krow ships with Formatters that render the table as an HTML table,\nor as an ASCII table for the command-line. Examples are shown below:<\/p>\n<p><strong>SingleBorder AsciiTable<\/strong><\/p>\n<pre><code>┌──────┬──────┬──────┬──────┐\n│      │ col1 │ col2 │ col3 │\n├──────┼──────┼──────┼──────┤\n│ row1 │ 1-1  │ 2-1  │ 3-1  │\n├──────┼──────┼──────┼──────┤\n│ row2 │ 1-2  │ 2-2  │ 3-2  │\n└──────┴──────┴──────┴──────┘\n<\/code><\/pre>\n<p><strong>DoubleBorder AsciiTable<\/strong><\/p>\n<pre><code>╔══════╦══════╦══════╦══════╗\n║      ║ col1 ║ col2 ║ col3 ║\n╠══════╬══════╬══════╬══════╣\n║ row1 ║ 1-1  ║ 2-1  ║ 3-1  ║\n╠══════╬══════╬══════╬══════╣\n║ row2 ║ 1-2  ║ 2-2  ║ 3-2  ║\n╚══════╩══════╩══════╩══════╝\n<\/code><\/pre>\n<p><strong>Crossing AsciiTable<\/strong><\/p>\n<pre><code>+------+------+------+------+\n|      | col1 | col2 | col3 |\n+------+------+------+------+\n| row1 | 1-1  | 2-1  | 3-1  |\n+------+------+------+------+\n| row2 | 1-2  | 2-2  | 3-2  |\n+------+------+------+------+\n<\/code><\/pre>\n<p><strong>HtmlTable<\/strong><\/p>\n<pre><code>&lt;table&gt;\n  &lt;thead&gt;\n  &lt;tr&gt;\n    &lt;th&gt;&lt;/th&gt;\n    &lt;th&gt;col1&lt;/th&gt;\n    &lt;th&gt;col2&lt;/th&gt;\n    &lt;th&gt;col3&lt;/th&gt;\n  &lt;/tr&gt;\n  &lt;/thead&gt;\n  &lt;tbody&gt;\n  &lt;tr&gt;\n    &lt;td&gt;row1&lt;/td&gt;\n    &lt;td&gt;1-1&lt;/td&gt;\n    &lt;td&gt;2-1&lt;/td&gt;\n    &lt;td&gt;3-1&lt;/td&gt;\n  &lt;/tr&gt;\n  &lt;tr&gt;\n    &lt;td&gt;row2&lt;/td&gt;\n    &lt;td&gt;1-2&lt;/td&gt;\n    &lt;td&gt;2-2&lt;/td&gt;\n    &lt;td&gt;3-2&lt;/td&gt;\n  &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;\n<\/code><\/pre>\n"
+          }]
+        },
+        "creating-tables": {
+          "ownKey": "creating-tables",
+          "ownPages": [{
+            "reference": {
+              "path": "wiki",
+              "baseUrl": "https://copper-leaf.github.io/krow",
+              "fileName": "creating-tables",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://copper-leaf.github.io/krow/wiki/creating-tables"
+            },
+            "next": {
+              "path": "wiki",
+              "baseUrl": "https://copper-leaf.github.io/krow",
+              "fileName": "formatters",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://copper-leaf.github.io/krow/wiki/formatters"
+            },
+            "description": "",
+            "title": "Creating Tables",
+            "content": "<h1 id=\"building-tables\">Building Tables<\/h1>\n<p>Tables are built with Kotlin's type-safe builder syntax. You open a <code>krow<\/code> closure, and are then able to call the\nvarious methods and set properties that build your table. A complete example is shown below:<\/p>\n<pre><code class=\"language-kotlin\">val table = krow {\n    cell(&quot;col1&quot;, &quot;row1&quot;) { content = &quot;1-1&quot; }\n    cell(&quot;col1&quot;, &quot;row2&quot;) { content = &quot;1-2&quot; }\n\n    cell(&quot;col2&quot;, &quot;row1&quot;) { content = &quot;2-1&quot; }\n    cell(&quot;col2&quot;, &quot;row2&quot;) { content = &quot;2-2&quot; }\n\n    cell(&quot;col3&quot;, &quot;row1&quot;) { content = &quot;3-1&quot; }\n    cell(&quot;col3&quot;, &quot;row2&quot;) { content = &quot;3-2&quot; }\n\n    table {\n        wrapTextAt = 30\n        horizontalAlignment = HorizontalAlignment.CENTER\n        verticalAlignment = VerticalAlignment.TOP\n    }\n}\n<\/code><\/pre>\n<p>A Table is build of Cells arranged in a 2D grid.<\/p>\n<p>The <code>cell()<\/code> method accepts a pair of keys for <code>column, row<\/code> index. If either of these two keys do not exist, then the\ntable will add a row or column accordingly, and then set the properties of that cell with the closure opened at that\ncell.<\/p>\n<p>The <code>row()<\/code> method takes a key for a row, and applies the closure to all cells in that row. If the row does not exist,\nthe table will add the row before applying the closure to all its cells. In the same way, you can use the <code>column()<\/code> to\nsetup an entire column of cells.<\/p>\n<p>the <code>table()<\/code> method applies the closure to every cell in the entire table.<\/p>\n<p>You can also set the ordering of rows and columns with the <code>columns()<\/code>, and <code>rows()<\/code> methods, which each take a list of\nStrings as the names of the columns or rows to add. Other rows or columns may be added later with the above methods, but\nthey will be added at the end or added in place if the column or row already exists. At this time, it is not possible to\nreorder columns or rows once they have been created, so if you need a specific order, set it before configuring any\nindividual cells, columns, or rows.<\/p>\n"
+          }]
+        }
+      },
+      "ownPages": [{
+        "reference": {
+          "path": "",
+          "baseUrl": "https://copper-leaf.github.io/krow",
+          "fileName": "wiki",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://copper-leaf.github.io/krow/wiki"
+        },
+        "description": "",
+        "title": "Wiki",
+        "content": "<html>\n <head><\/head>\n <body>\n  <ul> \n   <li><a href=\"https://copper-leaf.github.io/krow/wiki/creating-tables\">Creating Tables<\/a><\/li> \n   <li><a href=\"https://copper-leaf.github.io/krow/wiki/formatters\">Table Formatters<\/a><\/li> \n  <\/ul> \n <\/body>\n<\/html>\n"
+      }]
+    },
+    "changelog": {
+      "ownKey": "changelog",
+      "ownPages": [{
+        "reference": {
+          "path": "",
+          "baseUrl": "https://copper-leaf.github.io/krow",
+          "fileName": "changelog",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://copper-leaf.github.io/krow/changelog"
+        },
+        "description": "",
+        "title": "Changelog",
+        "content": ""
+      }]
+    }
+  },
+  "ownPages": [
+    {
+      "reference": {
+        "path": "",
+        "baseUrl": "https://copper-leaf.github.io/krow",
+        "fileName": "",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://copper-leaf.github.io/krow"
+      },
+      "description": "",
+      "title": "Krow",
+      "content": "<h1 id=\"krow\">Krow<\/h1>\n<blockquote>\n<p>A small library for generating tables in ASCII or HTML formats, built with Kotlin's type-safe builders<\/p>\n<\/blockquote>\n<p><a href=\"https://travis-ci.org/copper-leaf/krow\"><img src=\"https://travis-ci.org/copper-leaf/krow.svg?branch=master\" alt=\"Build Status\" /><\/a>\n<a href=\"https://bintray.com/javaeden/Eden/krow/_latestVersion\"><img src=\"https://api.bintray.com/packages/javaeden/Eden/krow/images/download.svg\" alt=\"Latest Version\" /><\/a>\n<a href=\"https://www.codacy.com/app/cjbrooks12/krow?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=copper-leaf/krow&amp;utm_campaign=Badge_Grade\"><img src=\"https://api.codacy.com/project/badge/Grade/37385c8388e6499793a509fc335fa21c\" alt=\"Codacy Project Grade\" /><\/a>\n<a href=\"https://www.codacy.com/app/cjbrooks12/krow?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=copper-leaf/krow&amp;utm_campaign=Badge_Coverage\"><img src=\"https://api.codacy.com/project/badge/Coverage/37385c8388e6499793a509fc335fa21c\" alt=\"Code Coverage\" /><\/a><\/p>\n<h2 id=\"building-tables\">Building Tables<\/h2>\n<p>Tables are built with Kotlin's type-safe builder syntax. You open a <code>krow<\/code> closure, and are then able to call the\nvarious methods and set properties that build your table. A complete example is shown below:<\/p>\n<pre><code class=\"language-kotlin\">val table = krow {\n    cell(&quot;col1&quot;, &quot;row1&quot;) { content = &quot;1-1&quot; }\n    cell(&quot;col1&quot;, &quot;row2&quot;) { content = &quot;1-2&quot; }\n\n    cell(&quot;col2&quot;, &quot;row1&quot;) { content = &quot;2-1&quot; }\n    cell(&quot;col2&quot;, &quot;row2&quot;) { content = &quot;2-2&quot; }\n\n    cell(&quot;col3&quot;, &quot;row1&quot;) { content = &quot;3-1&quot; }\n    cell(&quot;col3&quot;, &quot;row2&quot;) { content = &quot;3-2&quot; }\n\n    table {\n        wrapTextAt = 30\n        horizontalAlignment = HorizontalAlignment.CENTER\n        verticalAlignment = VerticalAlignment.TOP\n    }\n}\n<\/code><\/pre>\n<p>A Table is build of Cells arranged in a 2D grid.<\/p>\n<p>The <code>cell()<\/code> method accepts a pair of keys for <code>column, row<\/code> index. If either of these two keys do not exist, then the\ntable will add a row or column accordingly, and then set the properties of that cell with the closure opened at that\ncell.<\/p>\n<p>The <code>row()<\/code> method takes a key for a row, and applies the closure to all cells in that row. If the row does not exist,\nthe table will add the row before applying the closure to all its cells. In the same way, you can use the <code>column()<\/code> to\nsetup an entire column of cells.<\/p>\n<p>the <code>table()<\/code> method applies the closure to every cell in the entire table.<\/p>\n<p>You can also set the ordering of rows and columns with the <code>columns()<\/code>, and <code>rows()<\/code> methods, which each take a list of\nStrings as the names of the columns or rows to add. Other rows or columns may be added later with the above methods, but\nthey will be added at the end or added in place if the column or row already exists. At this time, it is not possible to\nreorder columns or rows once they have been created, so if you need a specific order, set it before configuring any\nindividual cells, columns, or rows.<\/p>\n<h2 id=\"formatting-tables\">Formatting Tables<\/h2>\n<p>Once a Table has been created like so:<\/p>\n<pre><code class=\"language-kotlin\">val table = krow {\n    ...\n}\n<\/code><\/pre>\n<p>You can then print the Table in any format you wish. Krow ships with Formatters that render the table as an HTML table,\nor as an ASCII table for the command-line. Examples are shown below:<\/p>\n<p><strong>SingleBorder AsciiTable<\/strong><\/p>\n<pre><code>┌──────┬──────┬──────┬──────┐\n│      │ col1 │ col2 │ col3 │\n├──────┼──────┼──────┼──────┤\n│ row1 │ 1-1  │ 2-1  │ 3-1  │\n├──────┼──────┼──────┼──────┤\n│ row2 │ 1-2  │ 2-2  │ 3-2  │\n└──────┴──────┴──────┴──────┘\n<\/code><\/pre>\n<p><strong>DoubleBorder AsciiTable<\/strong><\/p>\n<pre><code>╔══════╦══════╦══════╦══════╗\n║      ║ col1 ║ col2 ║ col3 ║\n╠══════╬══════╬══════╬══════╣\n║ row1 ║ 1-1  ║ 2-1  ║ 3-1  ║\n╠══════╬══════╬══════╬══════╣\n║ row2 ║ 1-2  ║ 2-2  ║ 3-2  ║\n╚══════╩══════╩══════╩══════╝\n<\/code><\/pre>\n<p><strong>Crossing AsciiTable<\/strong><\/p>\n<pre><code>+------+------+------+------+\n|      | col1 | col2 | col3 |\n+------+------+------+------+\n| row1 | 1-1  | 2-1  | 3-1  |\n+------+------+------+------+\n| row2 | 1-2  | 2-2  | 3-2  |\n+------+------+------+------+\n<\/code><\/pre>\n<p><strong>HtmlTable<\/strong><\/p>\n<pre><code>&lt;table&gt;\n  &lt;thead&gt;\n  &lt;tr&gt;\n    &lt;th&gt;&lt;/th&gt;\n    &lt;th&gt;col1&lt;/th&gt;\n    &lt;th&gt;col2&lt;/th&gt;\n    &lt;th&gt;col3&lt;/th&gt;\n  &lt;/tr&gt;\n  &lt;/thead&gt;\n  &lt;tbody&gt;\n  &lt;tr&gt;\n    &lt;td&gt;row1&lt;/td&gt;\n    &lt;td&gt;1-1&lt;/td&gt;\n    &lt;td&gt;2-1&lt;/td&gt;\n    &lt;td&gt;3-1&lt;/td&gt;\n  &lt;/tr&gt;\n  &lt;tr&gt;\n    &lt;td&gt;row2&lt;/td&gt;\n    &lt;td&gt;1-2&lt;/td&gt;\n    &lt;td&gt;2-2&lt;/td&gt;\n    &lt;td&gt;3-2&lt;/td&gt;\n  &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;\n<\/code><\/pre>\n"
+    },
+    {
+      "reference": {
+        "path": "",
+        "baseUrl": "https://copper-leaf.github.io/krow",
+        "fileName": "404",
+        "extension": "html",
+        "usePrettyUrl": false,
+        "link": "https://copper-leaf.github.io/krow/404.html"
+      },
+      "description": "",
+      "title": "Krow",
+      "content": "\n<div class=\"has-text-centered\">\n  <div class=\"is-size-1\" style=\"margin-bottom: 30px;\">There's nothing here!<\/div>\n  <img src=\"https://copper-leaf.github.io/krow/assets/media/undraw_page_not_found.svg\" alt=\"Not Found\">\n  <!-- Image courtesy of unDraw (https://undraw.co/license) -->\n<\/div>\n"
+    }
+  ]
+}

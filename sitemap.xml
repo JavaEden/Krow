@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>https://copper-leaf.github.io/krow/sitemap-home.xml</loc>
+        <lastmod>2019-03-06T05:31:18.986</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://copper-leaf.github.io/krow/sitemap-pages.xml</loc>
+        <lastmod>2019-03-06T05:31:18.989</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://copper-leaf.github.io/krow/sitemap-wiki.xml</loc>
+        <lastmod>2019-03-06T05:31:18.991</lastmod>
+    </sitemap>
+    
+</sitemapindex>

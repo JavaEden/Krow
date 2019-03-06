@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.16.4"/>
+<link rel="icon" href="https://copper-leaf.github.io/krow/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Table Formatters</title>
+
+
+<meta name="description" content="A small library for generating tables in ASCII or HTML formats, built with Kotlin&#39;s type-safe builders">
+
+
+
+<link rel="prev" href="https://copper-leaf.github.io/krow/wiki/creating-tables">
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.16.4","baseUrl":"https://copper-leaf.github.io/krow","environment":"prod","version":"0.1.12"};
+</script>
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://copper-leaf.github.io/krow/Copper/e910c7c8/assets/css/bulma.css"/>
+<link rel="stylesheet" type="text/css" href="https://copper-leaf.github.io/krow/Copper/e910c7c8/assets/css/extraCss.css"/>
+<link rel="stylesheet" type="text/css" href="https://copper-leaf.github.io/krow/Copper/e910c7c8/assets/css/bulma-tooltip.css"/>
+<link rel="stylesheet" type="text/css" href="https://copper-leaf.github.io/krow/Copper/e910c7c8/assets/css/bulma-accordion.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://copper-leaf.github.io/krow/PrismJS/prism-themes/master/themes/prism-duotone-light.css"/>
+<!-- end:inject styles -->
+
+</head>
+<body>
+
+<div class="columns is-marginless">
+  <div class="column is-one-third is-paddingless column-main-left is-hidden-mobile">
+  
+    <section class="hero is-fullheight is-primary is-bold">
+<!-- Hero header: will stick at the top -->
+<div class="hero-head">
+  <div class="columns is-mobile has-text-centered">
+  
+    <div class="column">
+      <a class="icon is-inline-block" href="https://copper-leaf.github.io/krow" title="Home">
+        <i class="fas fa-home large-social-icon"></i>
+      </a>
+    </div>
+  
+    <div class="column">
+      <a class="icon is-inline-block" href="https://github.com/copper-leaf/krow" title="Github">
+        <i class="fab fa-github large-social-icon"></i>
+      </a>
+    </div>
+  
+    <div class="column">
+      <a class="icon is-inline-block" href="https://twitter.com/OrchidSSG" title="Twitter">
+        <i class="fab fa-twitter large-social-icon"></i>
+      </a>
+    </div>
+  
+  </div>
+</div>
+
+<!-- Hero content: will be in the middle -->
+<div class="hero-body">
+  <div class="container sidebar-menu">
+
+    <div class="sidebar-header-small">
+      <figure class="image is-64x64">
+        <img src="https://copper-leaf.github.io/krow/assets/media/theme-logo.png" alt="">
+      </figure>
+      <h1 class="title is-3 is-spaced has-text-centered">Krow</h1>
+    </div>
+
+    <details class="is-hidden-tablet">
+      <summary>
+        Menu
+      </summary>
+      <div id="mobile-sidebar-menu"></div>
+    </details>
+    <div class="is-hidden-mobile">
+      <aside class="menu" id="responsive-menu-content">
+
+      
+      
+      
+        <ul class="menu-list">
+
+<li>
+  <a href="https://copper-leaf.github.io/krow/wiki/creating-tables" class="">Creating Tables</a>
+</li>
+
+</ul>
+      
+      
+      
+      
+        <ul class="menu-list">
+
+<li>
+  <a href="https://copper-leaf.github.io/krow/wiki/formatters" class="is-active">Table Formatters</a>
+</li>
+
+</ul>
+      
+      
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function copyElem(fromId, toId){
+    console.log("copyElem(" + fromId + ", " + toId + ")");
+    var fromElementContent = document.getElementById(fromId);
+    var toElementContent = document.getElementById(toId);
+    toElementContent.outerHTML = fromElementContent.outerHTML;
+  }
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+    copyElem('responsive-menu-content', 'mobile-sidebar-menu');
+  });
+</script>
+
+<!-- Hero footer: will stick at the bottom -->
+<div class="hero-foot">
+  <nav class="tabs is-boxed is-centered">
+    <div class="container">
+      <ul>
+      
+        <li class="">
+          <a href="https://copper-leaf.github.io/krow">Home</a>
+        </li>
+      
+        <li class="">
+          <a href="https://copper-leaf.github.io/krow/wiki">Wiki</a>
+        </li>
+      
+        <li class="">
+          <a href="https://copper-leaf.github.io/krow/changelog">Changelog</a>
+        </li>
+      
+      </ul>
+    </div>
+  </nav>
+</div>
+</section>
+  
+  </div>
+  <div class="column is-one-third is-paddingless column-main-left is-hidden-tablet">
+    <section class="hero is-primary hero-image">
+<!-- Hero header: will stick at the top -->
+<div class="hero-head">
+  <div class="columns is-mobile has-text-centered">
+  
+    <div class="column">
+      <a class="icon is-inline-block" href="https://copper-leaf.github.io/krow" title="Home">
+        <i class="fas fa-home large-social-icon"></i>
+      </a>
+    </div>
+  
+    <div class="column">
+      <a class="icon is-inline-block" href="https://github.com/copper-leaf/krow" title="Github">
+        <i class="fab fa-github large-social-icon"></i>
+      </a>
+    </div>
+  
+    <div class="column">
+      <a class="icon is-inline-block" href="https://twitter.com/OrchidSSG" title="Twitter">
+        <i class="fab fa-twitter large-social-icon"></i>
+      </a>
+    </div>
+  
+  </div>
+</div>
+
+<!-- Hero content: will be in the middle -->
+<div class="hero-body">
+  <div class="container sidebar-menu">
+
+    <div class="sidebar-header-small">
+      <figure class="image is-64x64">
+        <img src="https://copper-leaf.github.io/krow/assets/media/theme-logo.png" alt="">
+      </figure>
+      <h1 class="title is-3 is-spaced has-text-centered">Krow</h1>
+    </div>
+
+    <details class="is-hidden-tablet">
+      <summary>
+        Menu
+      </summary>
+      <div id="mobile-sidebar-menu"></div>
+    </details>
+    <div class="is-hidden-mobile">
+      <aside class="menu" id="responsive-menu-content">
+
+      
+      
+      
+        <ul class="menu-list">
+
+<li>
+  <a href="https://copper-leaf.github.io/krow/wiki/creating-tables" class="">Creating Tables</a>
+</li>
+
+</ul>
+      
+      
+      
+      
+        <ul class="menu-list">
+
+<li>
+  <a href="https://copper-leaf.github.io/krow/wiki/formatters" class="is-active">Table Formatters</a>
+</li>
+
+</ul>
+      
+      
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function copyElem(fromId, toId){
+    console.log("copyElem(" + fromId + ", " + toId + ")");
+    var fromElementContent = document.getElementById(fromId);
+    var toElementContent = document.getElementById(toId);
+    toElementContent.outerHTML = fromElementContent.outerHTML;
+  }
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+    copyElem('responsive-menu-content', 'mobile-sidebar-menu');
+  });
+</script>
+
+<!-- Hero footer: will stick at the bottom -->
+<div class="hero-foot">
+  <nav class="tabs is-boxed is-centered">
+    <div class="container">
+      <ul>
+      
+        <li class="">
+          <a href="https://copper-leaf.github.io/krow">Home</a>
+        </li>
+      
+        <li class="">
+          <a href="https://copper-leaf.github.io/krow/wiki">Wiki</a>
+        </li>
+      
+        <li class="">
+          <a href="https://copper-leaf.github.io/krow/changelog">Changelog</a>
+        </li>
+      
+      </ul>
+    </div>
+  </nav>
+</div>
+</section>
+  </div>
+  <div class="column is-two-thirds is-paddingless column-main-right">
+    <div class="textured">
+    
+<div class="box">
+
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://copper-leaf.github.io/krow/wiki">Wiki</a></li>
+
+
+
+    <li class="is-active"><a href="https://copper-leaf.github.io/krow/wiki/formatters" aria-current="page">Table Formatters</a></li>
+
+
+</ul>
+</nav>
+
+
+</div>
+
+    
+<div class="box">
+  <h2 class="title is-1 is-spaced">Table Formatters</h2>
+  <p class="subtitle is-4"></p>
+  
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-desktop">
+<h1 id="formatting-tables">Formatting Tables</h1>
+<p>Once a Table has been created like so:</p>
+<pre><code class="language-kotlin">val table = krow {
+    ...
+}
+</code></pre>
+<p>You can then print the Table in any format you wish. Krow ships with Formatters that render the table as an HTML table,
+or as an ASCII table for the command-line. Examples are shown below:</p>
+<p><strong>SingleBorder AsciiTable</strong></p>
+<pre><code>┌──────┬──────┬──────┬──────┐
+│      │ col1 │ col2 │ col3 │
+├──────┼──────┼──────┼──────┤
+│ row1 │ 1-1  │ 2-1  │ 3-1  │
+├──────┼──────┼──────┼──────┤
+│ row2 │ 1-2  │ 2-2  │ 3-2  │
+└──────┴──────┴──────┴──────┘
+</code></pre>
+<p><strong>DoubleBorder AsciiTable</strong></p>
+<pre><code>╔══════╦══════╦══════╦══════╗
+║      ║ col1 ║ col2 ║ col3 ║
+╠══════╬══════╬══════╬══════╣
+║ row1 ║ 1-1  ║ 2-1  ║ 3-1  ║
+╠══════╬══════╬══════╬══════╣
+║ row2 ║ 1-2  ║ 2-2  ║ 3-2  ║
+╚══════╩══════╩══════╩══════╝
+</code></pre>
+<p><strong>Crossing AsciiTable</strong></p>
+<pre><code>+------+------+------+------+
+|      | col1 | col2 | col3 |
++------+------+------+------+
+| row1 | 1-1  | 2-1  | 3-1  |
++------+------+------+------+
+| row2 | 1-2  | 2-2  | 3-2  |
++------+------+------+------+
+</code></pre>
+<p><strong>HtmlTable</strong></p>
+<pre><code>&lt;table&gt;
+  &lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th&gt;col1&lt;/th&gt;
+    &lt;th&gt;col2&lt;/th&gt;
+    &lt;th&gt;col3&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;td&gt;row1&lt;/td&gt;
+    &lt;td&gt;1-1&lt;/td&gt;
+    &lt;td&gt;2-1&lt;/td&gt;
+    &lt;td&gt;3-1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;row2&lt;/td&gt;
+    &lt;td&gt;1-2&lt;/td&gt;
+    &lt;td&gt;2-2&lt;/td&gt;
+    &lt;td&gt;3-2&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+
+</div>
+                    
+                
+            
+        
+            
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-desktop">
+<h1 id="formatting-tables">Formatting Tables</h1>
+<p>Once a Table has been created like so:</p>
+<pre><code class="language-kotlin">val table = krow {
+    ...
+}
+</code></pre>
+<p>You can then print the Table in any format you wish. Krow ships with Formatters that render the table as an HTML table,
+or as an ASCII table for the command-line. Examples are shown below:</p>
+<p><strong>SingleBorder AsciiTable</strong></p>
+<pre><code>┌──────┬──────┬──────┬──────┐
+│      │ col1 │ col2 │ col3 │
+├──────┼──────┼──────┼──────┤
+│ row1 │ 1-1  │ 2-1  │ 3-1  │
+├──────┼──────┼──────┼──────┤
+│ row2 │ 1-2  │ 2-2  │ 3-2  │
+└──────┴──────┴──────┴──────┘
+</code></pre>
+<p><strong>DoubleBorder AsciiTable</strong></p>
+<pre><code>╔══════╦══════╦══════╦══════╗
+║      ║ col1 ║ col2 ║ col3 ║
+╠══════╬══════╬══════╬══════╣
+║ row1 ║ 1-1  ║ 2-1  ║ 3-1  ║
+╠══════╬══════╬══════╬══════╣
+║ row2 ║ 1-2  ║ 2-2  ║ 3-2  ║
+╚══════╩══════╩══════╩══════╝
+</code></pre>
+<p><strong>Crossing AsciiTable</strong></p>
+<pre><code>+------+------+------+------+
+|      | col1 | col2 | col3 |
++------+------+------+------+
+| row1 | 1-1  | 2-1  | 3-1  |
++------+------+------+------+
+| row2 | 1-2  | 2-2  | 3-2  |
++------+------+------+------+
+</code></pre>
+<p><strong>HtmlTable</strong></p>
+<pre><code>&lt;table&gt;
+  &lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th&gt;col1&lt;/th&gt;
+    &lt;th&gt;col2&lt;/th&gt;
+    &lt;th&gt;col3&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;td&gt;row1&lt;/td&gt;
+    &lt;td&gt;1-1&lt;/td&gt;
+    &lt;td&gt;2-1&lt;/td&gt;
+    &lt;td&gt;3-1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;row2&lt;/td&gt;
+    &lt;td&gt;1-2&lt;/td&gt;
+    &lt;td&gt;2-2&lt;/td&gt;
+    &lt;td&gt;3-2&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+
+</div>
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+</div>
+
+      <div class="grow"></div>
+      <div class="page-footer">
+      
+<nav class="pagination is-rounded footer-pagination" role="navigation" aria-label="pagination">
+
+
+  <a class="pagination-previous" href="https://copper-leaf.github.io/krow/wiki/creating-tables"><span class="icon"><i class="fas fa-chevron-left"></i></span>Creating Tables</a>
+
+
+
+  <a class="pagination-next" disabled><span class="inner">Next<span class="icon"><i class="fas fa-chevron-right"></i></span></span></a>
+
+
+</nav>
+
+      
+<footer class="footer">
+  <div class="content is-small">
+    <p>
+  &copy;2019 Copper Leaf.
+</p>
+<p>
+  Site proudly built with <a href="https://orchid.netlify.com/">Orchid</a>.<br>
+</p>
+<p>
+  <b>See Also:</b><br>
+  <span class="tag is-light"><a href="https://orchid.netlify.com/">Orchid</a></span>
+  <span class="tag is-light"><a href="https://javaeden.github.io/Clog/">Clog</a></span>
+  <span class="tag is-light"><a href="https://copper-leaf.github.io/krow/">Krow</a></span>
+  <span class="tag is-light"><a href="https://copper-leaf.github.io/kudzu/">Kudzu</a></span>
+  <span class="tag is-light"><a href="https://copper-leaf.github.io/trellis/">Trellis</a></span>
+  <span class="tag is-light"><a href="https://copper-leaf.github.io/dokka-json/">JSON Documentation Formatters</a></span>
+</p>
+  </div>
+</footer>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- start:inject scripts -->
+<script defer src="https://copper-leaf.github.io/krow/Copper/e910c7c8/releases/v5.4.0/js/all.js"></script>
+<script src="https://copper-leaf.github.io/krow/Copper/e910c7c8/assets/js/bulma-accordion.min.js"></script>
+<script>
+bulmaAccordion.attach();
+</script>
+<script src="https://copper-leaf.github.io/krow/ajax/libs/prism/1.8.4/prism.min.js"></script>
+<script src="https://copper-leaf.github.io/krow/ajax/libs/prism/1.8.4/components/prism-kotlin.min.js"></script>
+<script src="https://copper-leaf.github.io/krow/ajax/libs/prism/1.8.4/components/prism-java.min.js"></script>
+<script src="https://copper-leaf.github.io/krow/ajax/libs/prism/1.8.4/components/prism-groovy.min.js"></script>
+<!-- end:inject scripts -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

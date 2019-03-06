@@ -1,0 +1,146 @@
+@media screen and (min-width: 769px), print {
+  html {
+    overflow-y: hidden; }
+  .column-main-left {
+    height: 100vh; }
+    .column-main-left .hero {
+      height: 100vh; }
+  .column-main-right {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100vh; }
+  .post-content .card {
+    width: 33%; }
+  .hover {
+    transform: scale(1) translate3d(0, 0, 0);
+    transition: .3s; }
+    .hover:hover {
+      transform: scale(1.025) translate3d(0, 0, 0); }
+  .large-social-icon {
+    font-size: 2rem; } }
+
+.textured {
+  position: relative;
+  padding: 1.5rem;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column; }
+
+.textured::after {
+  content: "";
+  background-color: #ffffff;
+  background-image: url("https://copper-leaf.github.io/krow/assets/media/bg-texture.png");
+  background-repeat: repeat;
+  opacity: 1.0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+.grow {
+  flex-grow: 1; }
+
+.hover {
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25); }
+
+.column-main-left .hero {
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
+  overflow-y: scroll;
+  overflow-x: hidden; }
+
+[v-cloak] {
+  display: none; }
+
+.page-footer {
+  margin-top: 1.5rem; }
+  .page-footer .pagination.footer-pagination .pagination-previous {
+    background-color: white; }
+    .page-footer .pagination.footer-pagination .pagination-previous .icon {
+      justify-content: flex-start; }
+  .page-footer .pagination.footer-pagination .pagination-previous[disabled] {
+    opacity: 1; }
+    .page-footer .pagination.footer-pagination .pagination-previous[disabled] .inner {
+      opacity: 0.5;
+      display: flex; }
+  .page-footer .pagination.footer-pagination .pagination-next {
+    background-color: white; }
+    .page-footer .pagination.footer-pagination .pagination-next .icon {
+      justify-content: flex-end; }
+  .page-footer .pagination.footer-pagination .pagination-next[disabled] {
+    opacity: 1; }
+    .page-footer .pagination.footer-pagination .pagination-next[disabled] .inner {
+      opacity: 0.5;
+      display: flex; }
+  .page-footer footer.footer {
+    margin: -1.5rem;
+    background: white;
+    border-top: thin solid #ffaa6d; }
+
+.hero-head .columns {
+  padding: 24px 16px; }
+
+.hero-head .icon {
+  padding: 0;
+  margin: 0;
+  width: initial;
+  height: initial; }
+
+.hero-body .container {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  padding: 20px; }
+  .hero-body .container figure.image {
+    margin: 0 auto; }
+  .hero-body .container .title {
+    margin-top: 24px; }
+
+code.language-kotlin .token.number {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 1em;
+  min-width: 0; }
+
+code.language-kotlin .token.operator {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 1em;
+  min-width: 0; }
+
+.content blockquote, .content pre {
+  border-left: 5px solid #ffaa6d; }
+
+.content code {
+  color: #ffaa6d; }
+
+.content code[class*="language-"], .content pre[class*="language-"] {
+  color: #7695B2;
+  font-size: 0.875em; }
+
+.sidebar-menu .sidebar-header-small {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px; }
+  .sidebar-menu .sidebar-header-small .image {
+    margin: 0 20px 0 0 !important;
+    align-self: center; }
+  .sidebar-menu .sidebar-header-small .title {
+    margin: 0 !important;
+    align-self: center; }
+
+.sidebar-menu .menu-list a:hover {
+  background-color: rgba(0, 0, 0, 0.15); }
+
+.sidebar-menu .menu-list a.is-active {
+  background-color: rgba(255, 170, 109, 0.85); }
+
+.sidebar-menu .menu-list a.is-active:hover {
+  background-color: rgba(255, 155, 84, 0.45); }
+
+.sidebar-menu .menu-label {
+  color: white; }
